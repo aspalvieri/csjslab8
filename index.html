@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Who Wants to be a Millionaire?</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/4.1.0/css/fabric.min.css"/>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <main>
+        <div class="header">
+          <!-- Place to place messages or voting results etc -->
+        </div>
+        <h1 class="question">
+          {{question.question}}
+        </h1>
+
+        <button id="a" class="item-a"><span>A: </span>{{answers[0]}}</button>
+        <button id="b" class="item-b"><span>B: </span>{{answers[1]}}</button>
+        <!-- v-if used here to prevent 2 empty button boxes if the question is a true/false question -->
+        <button v-if="answers.length > 2" id="c" class="item-c"><span>C: </span>{{answers[2]}}</button>
+        <button v-if="answers.length > 2" id="d" class="item-d"><span>D: </span>{{answers[3]}}</button>
+      </main>
+
+      <aside>
+        <section>
+          <button id="fifty_fifty">
+            <i class="ms-Icon ms-Icon--Contrast" aria-hidden="true"></i>
+          </button>
+          <button id="ask_audience">
+            <i class="ms-Icon ms-Icon--Group" aria-hidden="true"></i>
+          </button>
+          <button id="phone_friend">
+            <i class="ms-Icon ms-Icon--Phone" aria-hidden="true"></i>
+          </button>
+        </section>
+
+        <ul>
+          <li v-for="(m,i) in money" :key="m.level" :class="[i == index ? 'active' : '']">{{m.level}} - ${{m.amount}}</li>
+        </ul>
+      </aside>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
